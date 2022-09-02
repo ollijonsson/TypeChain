@@ -24,6 +24,7 @@ export interface CodegenConfig {
   discriminateTypes: boolean // ethers-v5 will add an artificial field `contractName` that helps discriminate between contracts
   tsNocheck?: boolean
   environment: 'hardhat' | undefined
+  skipEmptyAbis: boolean
 }
 
 export type PublicConfig = MarkOptional<Config, 'flags' | 'inputDir'>

@@ -8,6 +8,7 @@ const DEFAULT_FLAGS: CodegenConfig = {
   alwaysGenerateOverloads: false,
   discriminateTypes: false,
   tsNocheck: false,
+  skipEmptyAbis: true,
   environment: undefined,
 }
 

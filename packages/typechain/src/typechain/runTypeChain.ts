@@ -17,19 +17,20 @@ export const DEFAULT_FLAGS: CodegenConfig = {
   alwaysGenerateOverloads: false,
   discriminateTypes: false,
   tsNocheck: false,
+  skipEmptyAbis: true,
   environment: undefined,
 }
 
 export async function runTypeChain(publicConfig: PublicConfig): Promise<Result> {
-  const allFiles = skipEmptyAbis(publicConfig.allFiles)
-
+  const allFiles = publicConfig.flags.skipEmptyAbis ? skipEmptyAbis(publicConfig.allFiles) : publicConfig.allFiles;
+  const filesToProcess = publicConfig.flags.skipEmptyAbis ? skipEmptyAbis(publicConfig.filesToProcess) : publicConfig.filesToProcess;
   // skip empty paths
   const config: Config = {
     flags: DEFAULT_FLAGS,
     inputDir: detectInputsRoot(allFiles),
     ...publicConfig,
     allFiles,
-    filesToProcess: skipEmptyAbis(publicConfig.filesToProcess),
+    filesToProcess,
   }
   const services: Services = {
     fs,
