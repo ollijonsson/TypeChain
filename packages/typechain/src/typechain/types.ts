@@ -27,7 +27,7 @@ export interface CodegenConfig {
   skipEmptyAbis: boolean
 }
 
-export type PublicConfig = MarkOptional<Config, 'flags' | 'inputDir'>
+export type PublicConfig = MarkOptional<Config, 'inputDir'>
 
 export abstract class TypeChainTarget {
   public abstract readonly name: string
